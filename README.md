@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# モバイルオーダー作ってみた
 
-## Getting Started
+> 現在は要件と設計の整理段階です。アプリの機能・デモ・検証結果は未完成です。
 
-First, run the development server:
+単一店舗のテイクアウト向けモバイルオーダーを題材に、注文から店舗確認、厨房処理、提供完了までの状態管理を検証する「作ってみた」プロジェクトです。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 問い
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+注文漏れ・修正・取消・品切れに対応しながら、テイクアウト注文の一連の流れを個人開発で検証可能な形にできるか。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## MVP
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 匿名の注文者が、メニュー選択から受付番号の取得まで行える
+- 店舗スタッフが、新規注文・修正要求・取消要求を確認できる
+- 厨房担当が、受理済み注文を確認し、調理中から提供済みへ状態を更新できる
+- 管理者が、商品・オプション・アレルゲン・品切れを管理できる
+- 通常注文、修正、取消、品切れを代表シナリオとして検証できる
 
-## Learn More
+## 非対象
 
-To learn more about Next.js, take a look at the following resources:
+- 決済、会員登録、実店舗リリース、実利用者データ
+- 店内注文、複数店舗、POS連携
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 開発状況
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Next.jsの初期環境を生成し、企画の範囲と検証計画を記録しました。注文機能は未実装です。要件定義書v1.2と客向けデザイン設計書v1.1を入力に、画面・状態・権限の設計へ進みます。
 
-## Deploy on Vercel
+## 開発・検証
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+採用済みの基盤はNext.js 16.3.6、React 19.2.8、TypeScript 5.9.3、Tailwind CSS 4.3.3、npmです（package-lock.jsonで確認）。開発用の初期手順は`npm ci`→`npm run dev`、静的確認は`npm run lint`・`npx tsc --noEmit`・`npm run build`です。注文機能向けのテストコマンドは実装時に追加・記録します。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## プロジェクト資料
+
+- 企画概要・範囲: [`00_docs/brief.md`](00_docs/brief.md)
+- 検証条件・証拠: [`00_docs/validation-plan.md`](00_docs/validation-plan.md)
+- 要件の入力: [`00_docs/01_要件定義書.md`](00_docs/01_要件定義書.md)
+- 客向け画面の参考仕様: [`00_docs/03_デザイン設計書.md`](00_docs/03_デザイン設計書.md)
+
+## 注意事項
+
+架空の検証プロジェクトです。実在店舗への注文、決済、商品の提供は行いません。参考UI・画像・ロゴ・フォントの公開可否は、公開前に個別に確認します。
+
+## License
+
+MIT License。条件は[`LICENSE`](LICENSE)を参照してください。
